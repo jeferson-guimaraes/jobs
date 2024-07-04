@@ -18,6 +18,7 @@ model Job {
   title String
   company String
   location String
+  summary String
   description String
   requirements String[]
   salary Float

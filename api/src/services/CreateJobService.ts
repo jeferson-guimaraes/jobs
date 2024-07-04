@@ -4,6 +4,7 @@ interface CreateJobProps {
   title: string
   company: string
   location: string
+  summary: string
   description: string
   requirements: string[]
   salary: number
@@ -13,9 +14,9 @@ interface CreateJobProps {
 }
 
 class CreateJobService {
-  async execute({ title, company, location, description, requirements, salary, benefits, type, employment_regime }: CreateJobProps) {
+  async execute({ title, company, location, summary, description, requirements, salary, benefits, type, employment_regime }: CreateJobProps) {
 
-    if (!title || !company || !location || !description || !requirements || !salary || !benefits || !type || !employment_regime) {
+    if (!title || !company || !location || !summary || !description || !requirements || !salary || !benefits || !type || !employment_regime) {
       throw new Error("Preencha todos os campos")
     }
 
@@ -24,6 +25,7 @@ class CreateJobService {
         title,
         company,
         location,
+        summary,
         description,
         requirements,
         salary,
