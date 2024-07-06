@@ -23,6 +23,12 @@ export default createGlobalStyle`
 	a {
 		text-decoration: none;
 	}
+
+	.cardIcon{
+		color: var(--green);
+		font-size: 1.2rem;
+		padding-right: 5px;
+	}
 `
 
 export const Main = styled.div`
@@ -40,7 +46,9 @@ interface ContainerProps {
 	display?: string,
 	height?: string,
 	background?: string,
-	padding?: string
+	padding?: string,
+	textalign?: string,
+	justify?: string
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -50,6 +58,8 @@ export const Container = styled.div<ContainerProps>`
     display: ${props => props.display || 'block'};
     align-items: center;
     background: ${props => props.background || 'none'};
+    text-align: ${props => props.textalign || 'initial'};
+	justify-content: ${props => props.justify || 'initial'};
 
     @media ${device.md} {
         max-width: 1024px;

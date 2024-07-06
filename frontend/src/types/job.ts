@@ -3,6 +3,7 @@ export interface JobProps {
   title: string
   company: string
   location: string
+  summary: string
   description: string
   requirements: string[]
   salary: number
