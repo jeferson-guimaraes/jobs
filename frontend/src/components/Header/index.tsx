@@ -2,7 +2,7 @@ import { BiSearchAlt2 } from "react-icons/bi"
 import { MdOutlineWork } from "react-icons/md"
 
 import { Jumbotrom, Container } from "../../styles/global"
-import { Capa,  Navbar, LogoLink, ButtonNew, Title, SubTitle, InputSearch, ButtonSearch } from "./style"
+import { Capa,  Navbar, LogoLink, ButtonNew, Title, SubTitle, InputSearch, ButtonSearch } from "./styles"
 
 import { JobsProps } from "../../types/job"
 
@@ -17,7 +17,7 @@ const Header = ({ jobs }: JobsProps) => {
           <div>
             <LogoLink to={"/"} className="">Jobs</LogoLink>
             <ButtonNew to={"/new-job"}>
-              <MdOutlineWork />
+              <MdOutlineWork className="buttonIcon" />
               Nova Vaga
             </ButtonNew>
           </div>
@@ -25,7 +25,7 @@ const Header = ({ jobs }: JobsProps) => {
         <Container display="flex">
           <Container height="auto">
             <Title>Encontre um emprego</Title>
-            <Container height="auto" display="flex" padding="0">
+            <Container height="auto" display="flex" $padding="0">
               <InputSearch placeholder="Título, Palavra Chave ou Empresa"/>
               <ButtonSearch to={'/'}>
                 <BiSearchAlt2 size={20} color="#FFF" />

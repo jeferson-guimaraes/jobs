@@ -15,7 +15,6 @@ export const Capa = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  color: #FFF;
   
   
   &::before {
@@ -95,12 +94,14 @@ export const Title = styled.h2`
   font-size: 25pt;
   padding-bottom: 1rem;
   font-weight: 500;
+  color: #FFF;
 `
 
 export const SubTitle = styled.h3`
   font-size: 18pt;
   margin-top: 2.5rem;
   font-weight: 500;
+  color: #FFF;
 `
 
 export const InputSearch = styled(Input)`

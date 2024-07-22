@@ -4,7 +4,9 @@ import { device } from "../styles/breakpoint";
 export default createGlobalStyle`
 	:root{
 		--black: #1d1d1d;
+		--light-black: #555555;
 		--green: #00b679;
+		--green-shadow: #00b679c3;
 	}
 
 	* {
@@ -14,20 +16,45 @@ export default createGlobalStyle`
 	}
 
 	body {
-		color: #1d1d1d;
-		font-size: 16px;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 400;
+		color: var(--light-black);
+		font-size: 14px;
+		font-family: "Poppins", sans-serif;
 	}
 
 	a {
 		text-decoration: none;
 	}
 
+	h1,
+	h2,
+	h3{
+		color: #222222;
+	}
+
+	input,
+	textarea {
+		color: var(--light-black);
+	}
+
+	form {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.largeIcon{
+		font-size: 1.2rem;
+		margin-right: 1rem;
+	}
+
 	.cardIcon{
 		color: var(--green);
 		font-size: 1.2rem;
-		padding-right: 5px;
+		margin-right: 10px;
+	}
+
+	.buttonIcon{
+		font-size: 12pt;
 	}
 `
 
@@ -45,21 +72,23 @@ export const Jumbotrom = styled.div`
 interface ContainerProps {
 	display?: string,
 	height?: string,
+	width?: string,
 	background?: string,
-	padding?: string,
-	textalign?: string,
-	justify?: string
+	$padding?: string,
+	$textalign?: string,
+	$justify?: string
 }
 
 export const Container = styled.div<ContainerProps>`
     width: 100%;
     height: ${props => props.height || '100%'};
-    padding: ${props => props.padding || '0 1rem'};
+    width: ${props => props.width || '100%'};
+    padding: ${props => props.$padding || '0 1rem'};
     display: ${props => props.display || 'block'};
     align-items: center;
     background: ${props => props.background || 'none'};
-    text-align: ${props => props.textalign || 'initial'};
-	justify-content: ${props => props.justify || 'initial'};
+    text-align: ${props => props.$textalign || 'initial'};
+		justify-content: ${props => props.$justify || 'initial'};
 
     @media ${device.md} {
         max-width: 1024px;

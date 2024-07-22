@@ -39,6 +39,7 @@ export const Card = styled(Link)`
 export const CardTitle = styled.h3`
 	font-size: 1.1rem;
 	margin-bottom: 1rem;
+	color: #FFF;
 `
 
 export const TextCard = styled.div`

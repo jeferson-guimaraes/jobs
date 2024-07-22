@@ -7,6 +7,7 @@ import Home from './pages/Home/index.tsx'
 import NewJob from './pages/NewJob/index.tsx'
 import Job from './pages/Job'
 import Search from './pages/Search/'
+import JobEdit from './pages/JobEdit/index.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<Home />} />
           <Route path="new-job" element={<NewJob />} />
           <Route path="job/:id" element={<Job />} />
+          <Route path="job/edit/:id" element={<JobEdit />} />
           <Route path="search" element={<Search />} />
         </Route>
       </Routes>
