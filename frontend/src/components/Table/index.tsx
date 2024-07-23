@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { ButtonDelete, StyledTable, TableCell, TableHeader, TableRow, TableWrapper } from "./styles"
 import InputWithButton from "../InputWithButton"
-import { FormGroup } from "../../pages/JobEdit/styles"
+import { FormGroup, Label } from "../../pages/JobEdit/styles"
 import { InputProps } from "../../types/input"
 
 interface TableProps extends Omit<InputProps, "defaultValue">{
@@ -24,6 +24,7 @@ const Table = ({ title, data, placeholder = "", tableId, label, type, id, name, 
 
 	return (
 		<FormGroup>
+			<Label>{label}</Label>
 			<InputWithButton onAdd={addRow} placeholder={placeholder} label={label} type={type} id={id} name={name} register={register} />
 			<TableWrapper id={tableId}>
 				<StyledTable>

@@ -9,6 +9,7 @@ export const SubTitle = styled.h3`
 
 export const JobText = styled.div`
   margin-top: 1rem;
+  white-space: pre-wrap;
 `
 
 export const ButtonEdit = styled(Link)`

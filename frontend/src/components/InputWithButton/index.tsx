@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { InputWrapper, StyledButton, StyledInput } from "./styled"
+import { InputWrapper, StyledButton, StyledInput } from "./styles"
 import { InputProps } from "../../types/input"
 
 interface InputWithButtonProps extends Omit<InputProps, "defaultValue">{
@@ -7,8 +7,7 @@ interface InputWithButtonProps extends Omit<InputProps, "defaultValue">{
 	placeholder?: string
 }
 
-// const InputWithButton = ({ onAdd, placeholder = "" }: InputWithButtonProps) => {
-const InputWithButton = ({ label, id, name, register, type = 'text', onAdd, placeholder }: InputWithButtonProps) => {
+const InputWithButton = ({ onAdd, placeholder }: InputWithButtonProps) => {
 	const [inputValue, setInputValue] = useState('')
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

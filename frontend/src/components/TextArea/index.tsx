@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
 import { StyledTextArea } from "./styles";
+import { TextAreaProps } from "../../types/textarea";
+import { FormGroup, Label } from "../../pages/JobEdit/styles";
 
-interface TextAreaProps{
-	value?: string
-	rows?: number
-}
-
-const TextArea = ({ value = '', rows}: TextAreaProps) => {
-	const [text, setText] = useState<string>(value)
-
-	useEffect(() => {
-			setText(value || '')
-	}, [value])
-
-	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setText(e.target.value)
-	}
+const TextArea = ({ defaultValue = '', rows, name, id, register, label}: TextAreaProps) => {
 
 	return (
-		<StyledTextArea
-			rows={rows}		
-			value={text}
-			onChange={handleChange}
-		>
-		</StyledTextArea>
+		<FormGroup>
+			<Label>{label}</Label>
+			<StyledTextArea
+				id={id}
+				rows={rows}		
+				defaultValue={defaultValue}
+				{...register(name)}
+			>
+			</StyledTextArea>
+		</FormGroup>
 	)
 }
 
