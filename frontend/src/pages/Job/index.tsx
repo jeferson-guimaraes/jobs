@@ -12,21 +12,17 @@ import { FaBuilding } from "react-icons/fa"
 import { BiSolidTrashAlt, BiSolidPencil } from "react-icons/bi";
 import { SubTitle, JobText, ButtonEdit, ButtonDelete } from "./styles"
 
-const url = import.meta.env.VITE_API
-
 const Job = () => {
   const { id } = useParams<{ id: string }>()
   const [job, setJob] = useState<JobProps | null>(null)
 
-  const getJob = async (url: string) => {
-    const res = await api.get(url)
+  const getJob = async () => {
+    const res = await api.get(`/job/${id}`)
     setJob(res.data)
   }
 
   useEffect(() => {
-    const jobUrl = `${url}/job/${id}`
-
-    getJob(jobUrl)
+    getJob()
   }, [])
 
   return (

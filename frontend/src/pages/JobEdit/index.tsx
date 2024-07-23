@@ -13,8 +13,6 @@ import Input from "../../components/Input"
 import TextArea from "../../components/TextArea"
 import InputMoney from "../../components/InputMoney"
 
-const url = import.meta.env.VITE_API
-
 const JobEdit = () => {
   const { id } = useParams<{ id: string }>()
   const [job, setJob] = useState<JobProps | null>(null)
@@ -24,19 +22,32 @@ const JobEdit = () => {
     handleSubmit
   } = useForm()
 
-  const getJob = async (url: string) => {
-    const res = await api.get(url)
+  const getJob = async () => {
+    const res = await api.get(`/job/${id}`)
     setJob(res.data)
   }
 
   useEffect(() => {
-    const jobUrl = `${url}/job/${id}`
-
-    getJob(jobUrl)
+    getJob()
   }, [])
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data)
+  const getDataTable = ((tableId: string) => {
+    const trs = [...document.querySelectorAll(`#${tableId} tbody tr`)].map( tr => {
+      return tr.querySelector('td')?.textContent
+    })
+    return trs
+  })
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    data.id = id
+    data.benefits = getDataTable('tableBenefits')
+    data.requirements = getDataTable('tableRequirements')
+    
+    const response = await api.put(`/job`, {
+      data
+    })
+
+    console.log(response)
   }
 
 
@@ -83,8 +94,17 @@ const JobEdit = () => {
 								defaultValue={job.salary}
               />
 
-              <Label>Benefícios</Label>
-              <Table title="Benefícios" data={job.benefits} placeholder="Insira um benefício" />
+              <Table
+                tableId="tableBenefits"
+                id="benefits"
+                name="benefits"
+                type="text"
+                register={register}
+                label="Benefícios" 
+                title="Benefícios"
+                data={job.benefits}
+                placeholder="Insira um benefício" 
+              />
 
               <Input
                 id="summary"
@@ -98,8 +118,17 @@ const JobEdit = () => {
               <Label>Descrição</Label>
               <TextArea value={job.description} rows={10} />
 
-              <Label>Requisitos</Label>
-              <Table title="Requisitos" data={job.requirements} placeholder="Insira um requisito" />
+              <Table 
+                tableId="tableRequirements"
+                title="Requisitos"
+                data={job.requirements}
+                placeholder="Insira um requisito"
+                id="requirements"
+                name="requirements"
+                label="Requisitos"
+                register={register}
+                type="text"
+              />
 
               <ButtonSave
                 type="submit"
