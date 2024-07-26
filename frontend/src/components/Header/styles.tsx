@@ -61,12 +61,14 @@ export const Navbar = styled.nav`
     }
   }
 `
-export const LogoLink = styled(Link)`
+export const LogoLink = styled.button`
   font-family: "MuseoModerno", sans-serif;
   font-weight: 900;
   font-size: 38px;
   font-style: italic;
   color: #FFF;
+  background-color: transparent;
+  border: none;
 `
 
 export const ButtonNew = styled(Link)`

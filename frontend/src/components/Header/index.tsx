@@ -1,21 +1,40 @@
-import { BiSearchAlt2 } from "react-icons/bi"
-import { MdOutlineWork } from "react-icons/md"
+import { useNavigate } from "react-router-dom"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { useSearch } from "../../contexts/SearchContext"
 
 import { Jumbotrom, Container } from "../../styles/global"
-import { Capa,  Navbar, LogoLink, ButtonNew, Title, SubTitle, InputSearch, ButtonSearch } from "./styles"
+import { Capa, Navbar, LogoLink, ButtonNew, Title, SubTitle } from "./styles"
+import { MdOutlineWork } from "react-icons/md"
 
 import { JobsProps } from "../../types/job"
+import InputSearch from "../InputSearch"
 
 const Header = ({ jobs }: JobsProps) => {
+  const {
+    register,
+    handleSubmit
+  } = useForm()
+  const navigate = useNavigate()
 
-  const availableJobs = jobs.filter((job) => job.status == true)
+  const { setSearchQuery } = useSearch()
+  const availableJobs = jobs.filter((job) => job.status)
+
+  const onSubmit: SubmitHandler<any> = async (query) => {
+    setSearchQuery(query.jobSearch)
+    navigate('/')
+  }
+
+  const handleClick = () => {
+    setSearchQuery('')
+    navigate('/')
+  }
 
   return (
     <Jumbotrom>
       <Capa>
         <Navbar>
           <div>
-            <LogoLink to={"/"} className="">Jobs</LogoLink>
+            <LogoLink onClick={handleClick}>Jobs</LogoLink>
             <ButtonNew to={"/new-job"}>
               <MdOutlineWork className="buttonIcon" />
               Nova Vaga
@@ -26,10 +45,14 @@ const Header = ({ jobs }: JobsProps) => {
           <Container height="auto">
             <Title>Encontre um emprego</Title>
             <Container height="auto" display="flex" $padding="0">
-              <InputSearch placeholder="Título, Palavra Chave ou Empresa"/>
-              <ButtonSearch to={'/'}>
-                <BiSearchAlt2 size={20} color="#FFF" />
-              </ButtonSearch>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <InputSearch
+                  id="jobSearch"
+                  name="jobSearch"
+                  placeholder="Título, Palavra Chave ou Empresa"
+                  register={register}
+                />
+              </form>
             </Container>
             <SubTitle>Temos {availableJobs.length} vagas de emprego para você!</SubTitle>
           </Container>

@@ -7,6 +7,7 @@ import { JobProps } from "./types/job"
 import { api } from "./services/api"
 
 import GlobalStyle from "./styles/global"
+import { SearchProvider } from "./contexts/SearchContext"
 
 export default function App() {
   const [jobs, setJobs] = useState<JobProps[]>([])
@@ -24,12 +25,14 @@ export default function App() {
     <div>
       <GlobalStyle />
       <Main>
-        <Header jobs={jobs} />
-        <Jumbotrom>
-          <Container>
-            <Outlet context={jobs} />
-          </Container>
-        </Jumbotrom>
+        <SearchProvider>
+          <Header jobs={jobs} />
+          <Jumbotrom>
+            <Container>
+              <Outlet context={jobs} />
+            </Container>
+          </Jumbotrom>
+        </SearchProvider>
       </Main>
     </div>
   )

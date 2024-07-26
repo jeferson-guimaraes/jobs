@@ -4,6 +4,7 @@ import { ListJobController } from "./controllers/ListJobController"
 import { DeleteJobController } from "./controllers/DeleteJobController"
 import { UpdateJobController } from "./controllers/UpdateJobController"
 import { ShowJobController } from "./controllers/ShowJobController"
+import { ShowJobsController } from "./controllers/ShowJobsController"
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
 
@@ -13,6 +14,10 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
 
   fastify.get("/jobs", async (request: FastifyRequest, reply: FastifyReply) => {
     return new ListJobController().handle(request, reply)
+  })
+  
+  fastify.get("/jobs/search", async (request: FastifyRequest, reply: FastifyReply) => {
+    return new ShowJobsController().handle(request, reply)
   })
 
   fastify.get("/job/:id", async (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
