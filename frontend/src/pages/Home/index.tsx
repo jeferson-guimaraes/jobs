@@ -1,14 +1,14 @@
 import { useOutletContext } from 'react-router-dom';
 import { useSearch } from '../../contexts/SearchContext';
 
-import { JobProps } from '../../types/job';
+import { JobProps, JobsProps } from '../../types/job';
 import JobCard from "../../components/JobCard/"
 import { Title, CardsContainer } from "./styles"
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 
 const Home = () => {
-  const jobs = useOutletContext<JobProps[]>();
+  const { jobs } = useOutletContext<JobsProps>()
   const activeJobs = jobs.filter((job) => job.status)
   const inativeJobs = jobs.filter((job) => !job.status)
   const { searchQuery } = useSearch()

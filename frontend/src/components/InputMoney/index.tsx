@@ -3,9 +3,7 @@ import { StyledInput } from '../Input/styles'; // Supondo que você tenha um com
 import { FormGroup, Label } from '../../pages/JobEdit/styles'; // Componentes de estilo
 import { InputProps } from '../../types/input';
 
-// Função para formatar o valor como moeda
 const formatCurrency = (value: string): string => {
-	// Remove caracteres não numéricos e formata como moeda
 	const number = value.replace(/\D/g, '')
 	const formattedNumber = new Intl.NumberFormat('pt-BR', {
 		style: 'currency',
@@ -21,13 +19,11 @@ const formatCurrencyDefaultValue = (value: string): string => {
 		return number.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
 }
 
-const InputMoney = ({ label, id, name, register, defaultValue, type = 'text' }: InputProps) => {
+const InputMoney = ({ label, id, name, register, defaultValue = '0', type = 'text' }: InputProps) => {
 	const [currentValue, setCurrentValue] = useState<string>(formatCurrencyDefaultValue(`${defaultValue}`))
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		// Obtém o valor do input
 		const inputValue = e.target.value
-		// Atualiza o estado com o valor formatado
 		setCurrentValue(formatCurrency(inputValue))
 	};
 

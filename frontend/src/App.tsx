@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 import Header from "./components/Header"
 import { Main, Jumbotrom, Container } from "./styles/global"
 
-import { JobProps } from "./types/job"
+import { JobProps, JobsProps } from "./types/job"
 import { api } from "./services/api"
 
 import GlobalStyle from "./styles/global"
@@ -21,6 +21,15 @@ export default function App() {
     setJobs(response.data)
   }
 
+  const handleJobCreated = async () => {
+    loadJobs()
+  }
+
+  const contextValue: JobsProps = {
+    jobs,
+    handleJobCreated
+  }
+
   return(
     <div>
       <GlobalStyle />
@@ -29,7 +38,7 @@ export default function App() {
           <Header jobs={jobs} />
           <Jumbotrom>
             <Container>
-              <Outlet context={jobs} />
+              <Outlet context={contextValue} />
             </Container>
           </Jumbotrom>
         </SearchProvider>

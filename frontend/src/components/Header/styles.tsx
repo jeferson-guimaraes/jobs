@@ -69,6 +69,7 @@ export const LogoLink = styled.button`
   color: #FFF;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `
 
 export const ButtonNew = styled(Link)`

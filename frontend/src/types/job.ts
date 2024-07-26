@@ -19,4 +19,5 @@ export interface JobCardProps {
 
 export interface JobsProps {
   jobs: JobProps[]
+  handleJobCreated?: () => Promise<void>
 }

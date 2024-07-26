@@ -4,14 +4,14 @@ import InputWithButton from "../InputWithButton"
 import { FormGroup, Label } from "../../pages/JobEdit/styles"
 import { InputProps } from "../../types/input"
 
-interface TableProps extends Omit<InputProps, "defaultValue">{
+interface TableProps extends Omit<InputProps, "defaultValue"> {
 	title: string,
-	data: string[],
+	data?: string[],
 	tableId: string,
 	placeholder?: string
 }
 
-const Table = ({ title, data, placeholder = "", tableId, label, type, id, name, register }: TableProps) => {
+const Table = ({ title, data = [], placeholder = "", tableId, label, type, id, name, register }: TableProps) => {
 	const [row, setRow] = useState<string[]>(data)
 
 	const addRow = (text: string) => {
@@ -31,7 +31,7 @@ const Table = ({ title, data, placeholder = "", tableId, label, type, id, name, 
 					<thead>
 						<TableRow>
 							<TableHeader colSpan={2}>
-									{title}
+								{title}
 							</TableHeader>
 						</TableRow>
 					</thead>
@@ -39,19 +39,19 @@ const Table = ({ title, data, placeholder = "", tableId, label, type, id, name, 
 					<tbody>
 						{row.map((benefit, index) => (
 							<TableRow key={index}>
-									<TableCell>
-										{benefit}
-									</TableCell>
-									<TableCell $float="right">
-										<ButtonDelete
-											onClick={e => {
-												e.preventDefault()
-												deleteRow(index)
-											}}
-										>
-											Deletar
-										</ButtonDelete>
-									</TableCell>
+								<TableCell>
+									{benefit}
+								</TableCell>
+								<TableCell $float="right">
+									<ButtonDelete
+										onClick={e => {
+											e.preventDefault()
+											deleteRow(index)
+										}}
+									>
+										Deletar
+									</ButtonDelete>
+								</TableCell>
 							</TableRow>
 						))}
 					</tbody>

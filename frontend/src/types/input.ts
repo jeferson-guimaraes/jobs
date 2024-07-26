@@ -6,5 +6,5 @@ export interface InputProps {
 	name: string
 	type: string
 	register: UseFormRegister<any>
-	defaultValue: string | number
+	defaultValue?: string | number
 }
