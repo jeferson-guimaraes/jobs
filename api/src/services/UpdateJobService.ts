@@ -12,10 +12,11 @@ interface UpdateJobProps {
   benefits: string[]
   type: string
   employment_regime: string
+  status: boolean
 }
 
 class UpdateJobService {
-  async execute({ id, title, company, location, summary, description, requirements, salary, benefits, type, employment_regime }: UpdateJobProps) {
+  async execute({ id, title, company, location, summary, description, requirements, salary, benefits, type, employment_regime, status }: UpdateJobProps) {
     const updateUser = await prismaClient.job.update({
       where: {
         id: id
@@ -31,7 +32,7 @@ class UpdateJobService {
         benefits,
         type,
         employment_regime,
-        status: true
+        status
       }
     })
 
