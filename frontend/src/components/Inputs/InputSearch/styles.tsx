@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Input } from "../../styles/global"
+import { Input } from "../../../styles/global"
 
 export const InputWrapper = styled.div`
   display: flex;

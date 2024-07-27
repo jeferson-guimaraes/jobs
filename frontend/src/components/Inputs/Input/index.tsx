@@ -1,6 +1,6 @@
-import { FormGroup, Label } from "../../pages/JobEdit/styles"
+import { FormGroup, Label } from "../../../pages/JobEdit/styles"
 import { StyledInput } from "./styles"
-import { InputProps } from "../../types/input"
+import { InputProps } from "../../../types/input"
 
 const Input = ({ label, id, name, type, register, defaultValue }: InputProps & { defaultValue?: string }) => {
 

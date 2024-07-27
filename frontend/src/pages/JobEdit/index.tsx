@@ -9,9 +9,9 @@ import { Container } from "../../styles/global"
 import { Title } from "../Home/styles"
 import { ButtonSave } from "./styles"
 import Table from "../../components/Table/"
-import Input from "../../components/Input"
+import Input from "../../components/Inputs/Input"
 import TextArea from "../../components/TextArea"
-import InputMoney from "../../components/InputMoney"
+import InputMoney from "../../components/Inputs/InputMoney"
 import Select from "../../components/Select"
 
 const JobEdit = () => {

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ButtonDelete, StyledTable, TableCell, TableHeader, TableRow, TableWrapper } from "./styles"
-import InputWithButton from "../InputWithButton"
+import InputWithButton from "../Inputs/InputWithButton"
 import { FormGroup, Label } from "../../pages/JobEdit/styles"
 import { InputProps } from "../../types/input"
 

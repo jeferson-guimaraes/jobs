@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { InputWrapper, StyledButton, StyledInput } from "./styles"
-import { InputProps } from "../../types/input"
+import { InputProps } from "../../../types/input"
 
 interface InputWithButtonProps extends Omit<InputProps, "defaultValue">{
 	onAdd: (text: string) => void

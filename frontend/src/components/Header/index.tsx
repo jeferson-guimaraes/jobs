@@ -7,7 +7,7 @@ import { Capa, Navbar, LogoLink, ButtonNew, Title, SubTitle } from "./styles"
 import { MdOutlineWork } from "react-icons/md"
 
 import { JobsProps } from "../../types/job"
-import InputSearch from "../InputSearch"
+import InputSearch from "../Inputs/InputSearch"
 
 const Header = ({ jobs }: JobsProps) => {
   const {

@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { StyledInput } from '../Input/styles'; // Supondo que você tenha um componente de input estilizado
-import { FormGroup, Label } from '../../pages/JobEdit/styles'; // Componentes de estilo
-import { InputProps } from '../../types/input';
+import { FormGroup, Label } from '../../../pages/JobEdit/styles'; // Componentes de estilo
+import { InputProps } from '../../../types/input';
 
 const formatCurrency = (value: string): string => {
 	const number = value.replace(/\D/g, '')

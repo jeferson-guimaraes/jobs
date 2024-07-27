@@ -1,5 +1,5 @@
 import { InputWrapper, StyledButton, StyledInput } from "./styles"
-import { InputProps } from "../../types/input"
+import { InputProps } from "../../../types/input"
 import { BiSearchAlt2 } from "react-icons/bi"
 
 interface InputSearchProps extends Omit<InputProps, "defaultValue" | "label" | "type">  {
