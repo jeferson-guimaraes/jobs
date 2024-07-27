@@ -11,6 +11,8 @@ export interface JobProps {
   type: string
   employment_regime: string,
   status: boolean
+  created_at: Date
+  updated_at: Date
 }
 
 export interface JobCardProps {

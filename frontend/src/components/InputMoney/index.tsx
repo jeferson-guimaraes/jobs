@@ -15,8 +15,8 @@ const formatCurrency = (value: string): string => {
 }
 
 const formatCurrencyDefaultValue = (value: string): string => {
-		const number = parseFloat(value)
-		return number.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+	const number = parseFloat(value)
+	return number.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
 }
 
 const InputMoney = ({ label, id, name, register, defaultValue = '0', type = 'text' }: InputProps) => {
@@ -32,7 +32,7 @@ const InputMoney = ({ label, id, name, register, defaultValue = '0', type = 'tex
 			<Label htmlFor={id}>{label}</Label>
 			<StyledInput
 				id={id}
-				type={type} // Usar "text" ao invés de "number" para permitir a formatação monetária
+				type={type}
 				{...register(name)}
 				value={currentValue}
 				onChange={handleChange}

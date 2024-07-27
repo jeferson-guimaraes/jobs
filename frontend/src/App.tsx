@@ -18,7 +18,10 @@ export default function App() {
 
   async function loadJobs(){
     const response = await api.get("/jobs")
-    setJobs(response.data)
+    const sortedItemsDescending = response.data.sort((object1: JobProps, object2: JobProps) => {
+      return new Date(object2.created_at).getTime() - new Date(object1.created_at).getTime();
+    });
+    setJobs(sortedItemsDescending)
   }
 
   const handleJobCreated = async () => {

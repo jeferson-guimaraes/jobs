@@ -16,12 +16,20 @@ const NewJob = () => {
 
 	const {
 		register,
-		handleSubmit
+		handleSubmit,
+		reset
 	} = useForm()
 
 	const getDataTable = ((tableId: string) => {
     const trs = [...document.querySelectorAll(`#${tableId} tbody tr`)].map(tr => {
       return tr.querySelector('td')?.textContent
+    })
+    return trs
+  })
+
+	const removeDataTable = ((tableId: string) => {
+    const trs = [...document.querySelectorAll(`#${tableId} tbody tr`)].forEach(tr => {
+      return tr.remove()
     })
     return trs
   })
@@ -41,7 +49,12 @@ const NewJob = () => {
 			if (handleJobCreated) {
 				handleJobCreated()
 			}
-			console.log(response)
+			console.log(response.data)
+			reset()
+			reset({salary: 'R$ 0,00'})
+			removeDataTable('tableBenefits')
+			removeDataTable('tableRequirements')
+
     })
     .catch(error => {
       console.error(error.response.data)
