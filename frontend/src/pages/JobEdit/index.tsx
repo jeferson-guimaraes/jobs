@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useOutletContext, useParams } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { api } from "../../services/api"
-import { JobProps } from "../../types/job"
+import { JobProps, JobsProps } from "../../types/job"
 
 import { Container } from "../../styles/global"
 import { Title } from "../Home/styles"
@@ -17,6 +17,7 @@ import Select from "../../components/Select"
 const JobEdit = () => {
   const { id } = useParams<{ id: string }>()
   const [job, setJob] = useState<JobProps | null>(null)
+  const { handleJobCreated } = useOutletContext<JobsProps>()
 
   const {
     register,
@@ -63,6 +64,9 @@ const JobEdit = () => {
 
     await api.put(`/job`, data)
     .then(response => {
+      if (handleJobCreated) {
+				handleJobCreated()
+			}
       console.log(response)
     })
     .catch(error => {
