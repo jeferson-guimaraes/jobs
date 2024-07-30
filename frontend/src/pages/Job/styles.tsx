@@ -28,9 +28,9 @@ export const ButtonEdit = styled(Link)`
     background-color: #008060;
   }
 `
-export const ButtonDelete = styled(Link)`
+export const ButtonDelete = styled.button`
   font-size: 10pt;
-  padding: .5rem .8rem;
+  padding: .6rem .8rem;
   background-color: #ff0000b2;
   color: #FFF;
   border: none;
@@ -40,6 +40,7 @@ export const ButtonDelete = styled(Link)`
   transition: .4s;
   margin-left: .5rem;
   display: flex;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.1);

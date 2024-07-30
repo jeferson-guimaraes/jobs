@@ -13,11 +13,14 @@ import Input from "../../components/Inputs/Input"
 import TextArea from "../../components/TextArea"
 import InputMoney from "../../components/Inputs/InputMoney"
 import Select from "../../components/Select"
+import AlertModal from "../../components/Modals/AlertModal"
+import { useModal } from "../../contexts/ModalContext"
 
 const JobEdit = () => {
   const { id } = useParams<{ id: string }>()
   const [job, setJob] = useState<JobProps | null>(null)
   const { handleJobCreated } = useOutletContext<JobsProps>()
+  const { openModal } = useModal()
 
   const {
     register,
@@ -57,21 +60,21 @@ const JobEdit = () => {
     data.requirements = getDataTable('tableRequirements')
 
     const clanedSalary = data.salary.replace(/[R$\s]/g, '')
-    const americanValue = clanedSalary.replace('.','').replace(',', '.')
+    const americanValue = clanedSalary.replace('.', '').replace(',', '.')
     data.salary = parseFloat(americanValue)
-    
+
     data.status = data.status === 'true'
 
     await api.put(`/job`, data)
-    .then(response => {
-      if (handleJobCreated) {
-				handleJobCreated()
-			}
-      console.log(response)
-    })
-    .catch(error => {
-      console.error(error.response.data)
-    })
+      .then(() => {
+        if (handleJobCreated) {
+          handleJobCreated()
+        }
+        openModal('Vaga atualizada com sucesso !', 'success')
+      })
+      .catch(error => {
+        openModal(`Houve uma falha! \n ${error.response.data}`, 'error')
+      })
   }
 
 
@@ -191,11 +194,12 @@ const JobEdit = () => {
               />
             </Container>
           </form>
+          <AlertModal />
         </Container>
       ) : (
         <div>Carregando ...</div>
       )}
-    </Container >
+    </Container>
   )
 }
 

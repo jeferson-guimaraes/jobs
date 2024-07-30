@@ -39,7 +39,7 @@ const Home = () => {
       <div className="w-full md:max-w-6xl">
         {searchQuery != "" &&
           <>
-            <Title>Buscado por: {searchQuery}</Title>
+            <Title>Buscado por: <i>{searchQuery}</i></Title>
             {jobsSearched.length > 0 ? (
               <CardsContainer>
                 {jobsSearched.map((job) => (
@@ -47,7 +47,7 @@ const Home = () => {
                 ))}
               </CardsContainer>
             ) : (
-            <p>Nenhuma vaga encontrada</p>
+              <p>Nenhuma vaga encontrada</p>
             )}
           </>
         }
@@ -57,12 +57,14 @@ const Home = () => {
             <JobCard key={job.id} job={job} />
           ))}
         </CardsContainer>
-        <Title>Vagas fechadas</Title>
-        <CardsContainer>
-          {inativeJobs.length > 0 && inativeJobs.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
-        </CardsContainer>
+        {inativeJobs.length > 0 && inativeJobs.map((job) => (
+          <>
+            <Title>Vagas fechadas</Title>
+            <CardsContainer>
+              <JobCard key={job.id} job={job} />
+            </CardsContainer>
+          </>
+        ))}
       </div>
 
     </div>

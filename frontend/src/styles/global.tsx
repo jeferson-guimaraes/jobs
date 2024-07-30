@@ -56,6 +56,20 @@ export default createGlobalStyle`
 	.buttonIcon{
 		font-size: 12pt;
 	}
+
+	.Overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+  	background: rgba(0, 0, 0, 0.8);
+	}
+
+	.modalIcon{
+		color: var(--green)
+	}
 `
 
 export const Main = styled.div`
@@ -75,6 +89,7 @@ interface ContainerProps {
 	width?: string,
 	background?: string,
 	$padding?: string,
+	$margin?: string
 	$textalign?: string,
 	$justify?: string
 }
@@ -84,6 +99,7 @@ export const Container = styled.div<ContainerProps>`
     height: ${props => props.height || '100%'};
     width: ${props => props.width || '100%'};
     padding: ${props => props.$padding || '0 1rem'};
+		margin: ${props => props.$margin || '0'};
     display: ${props => props.display || 'block'};
     align-items: center;
     background: ${props => props.background || 'none'};

@@ -10,9 +10,12 @@ import TextArea from "../../components/TextArea"
 import { api } from "../../services/api"
 import { useOutletContext } from "react-router-dom"
 import { JobsProps } from "../../types/job"
+import AlertModal from "../../components/Modals/AlertModal"
+import { useModal } from "../../contexts/ModalContext"
 
 const NewJob = () => {
-	const { handleJobCreated } = useOutletContext<JobsProps>();
+	const { handleJobCreated } = useOutletContext<JobsProps>()
+	const { openModal } = useModal()
 
 	const {
 		register,
@@ -45,16 +48,15 @@ const NewJob = () => {
     data.status = true
 		
 		await api.post(`/job`, data)
-    .then(response => {
+    .then(() => {
 			if (handleJobCreated) {
 				handleJobCreated()
 			}
-			console.log(response.data)
+			openModal('Vaga cadastrada com sucesso !', 'success')
 			reset()
 			reset({salary: 'R$ 0,00'})
 			removeDataTable('tableBenefits')
 			removeDataTable('tableRequirements')
-
     })
     .catch(error => {
       console.error(error.response.data)
@@ -164,6 +166,7 @@ const NewJob = () => {
 						/>
 					</Container>
 				</form>
+				<AlertModal />
 			</Container>
 		</Container>
 	)

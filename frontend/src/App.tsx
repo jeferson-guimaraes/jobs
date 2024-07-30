@@ -8,6 +8,7 @@ import { api } from "./services/api"
 
 import GlobalStyle from "./styles/global"
 import { SearchProvider } from "./contexts/SearchContext"
+import { ModalProvider } from "./contexts/ModalContext"
 
 export default function App() {
   const [jobs, setJobs] = useState<JobProps[]>([])
@@ -16,7 +17,7 @@ export default function App() {
     loadJobs()
   }, [])
 
-  async function loadJobs(){
+  async function loadJobs() {
     const response = await api.get("/jobs")
     const sortedItemsDescending = response.data.sort((object1: JobProps, object2: JobProps) => {
       return new Date(object2.created_at).getTime() - new Date(object1.created_at).getTime();
@@ -33,17 +34,19 @@ export default function App() {
     handleJobCreated
   }
 
-  return(
+  return (
     <div>
       <GlobalStyle />
       <Main>
         <SearchProvider>
-          <Header jobs={jobs} />
-          <Jumbotrom>
-            <Container>
-              <Outlet context={contextValue} />
-            </Container>
-          </Jumbotrom>
+          <ModalProvider>
+            <Header jobs={jobs} />
+            <Jumbotrom>
+              <Container>
+                <Outlet context={contextValue} />
+              </Container>
+            </Jumbotrom>
+          </ModalProvider>
         </SearchProvider>
       </Main>
     </div>

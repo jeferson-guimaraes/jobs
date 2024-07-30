@@ -12,6 +12,7 @@ export const ButtonSave = styled.input`
   margin-top: 1.5rem;
   border-radius: 2px;
   transition: .4s;
+  cursor: pointer;
 
   &:hover {
     background-color: #008060;
