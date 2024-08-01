@@ -31,6 +31,7 @@ interface TableCellProps {
 }
 
 export const TableCell = styled.td<TableCellProps>`
+  width: 100%;
   padding: 10px;
   border-bottom: 1px solid #ddd;
   float: ${props => props.$float || 'none' };
