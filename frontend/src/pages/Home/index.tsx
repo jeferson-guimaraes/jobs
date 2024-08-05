@@ -57,14 +57,16 @@ const Home = () => {
             <JobCard key={job.id} job={job} />
           ))}
         </CardsContainer>
-        {inativeJobs.length > 0 && inativeJobs.map((job) => (
+        {inativeJobs.length > 0 &&
           <>
             <Title>Vagas fechadas</Title>
             <CardsContainer>
-              <JobCard key={job.id} job={job} />
+              {inativeJobs.map((job) => (
+                <JobCard key={job.id} job={job} />
+              ))}
             </CardsContainer>
           </>
-        ))}
+        }
       </div>
 
     </div>
