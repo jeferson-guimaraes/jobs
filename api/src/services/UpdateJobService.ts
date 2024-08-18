@@ -17,7 +17,7 @@ interface UpdateJobProps {
 
 class UpdateJobService {
   async execute({ id, title, company, location, summary, description, requirements, salary, benefits, type, employment_regime, status }: UpdateJobProps) {
-    const updateUser = await prismaClient.job.update({
+    const updatedJob = await prismaClient.job.update({
       where: {
         id: id
       },
@@ -36,7 +36,7 @@ class UpdateJobService {
       }
     })
 
-    return updateUser
+    return updatedJob
   }
 
 }
